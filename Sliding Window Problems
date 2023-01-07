@@ -1,0 +1,90 @@
+//Sliding window problem:- In this we do operation on subArray of size k and slide to the next window.
+//Question:- Find the maximum of each and every continous subArray of size K
+//Approach:- Sliding window algorithm
+import java.util.*;
+public class Main{
+    static void findMaxOfSubArrayofSizaK(int[] arr, int k){
+        int maximumSubArray;
+        for(int i=0;i<=arr.length - k;i++){
+            int max = arr[i];
+            for(int j = 1; j<k;j++){
+                if(arr[i+j] > max){
+                    max = arr[i+j];
+                }
+            }
+            System.out.print(max + " ");
+        }
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0;i<n ;i++){
+            arr[i] = sc.nextInt();
+        }
+        findMaxOfSubArrayofSizaK(arr,k);
+    }
+}
+
+//Question:- Maximum sum of K size subarray
+import java.util.*;
+public class Main{
+    static void findMaxSumOfSubArrayofSizaK(int[] arr, int k){
+        int maximumSumSubArray = 0;
+        for(int i=0;i<=arr.length - k;i++){
+            int sum = arr[i];
+            for(int j = 1; j<k;j++){
+                sum+=arr[i+j];
+            }
+            if(sum > maximumSumSubArray){
+                maximumSumSubArray = sum;
+            }
+        }
+        System.out.println(maximumSumSubArray);
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0;i<n ;i++){
+            arr[i] = sc.nextInt();
+        }
+        findMaxSumOfSubArrayofSizaK(arr,k);
+    }
+}
+
+//Question:- Minimum sum of K size subarray
+import java.util.*;
+public class Main{
+    static void findMinSumOfSubArrayofSizaK(int[] arr, int k){
+        int minimumSumSubArray =0;
+        for(int i=0;i<k;i++){
+            minimumSumSubArray+=arr[i];
+        }
+        for(int i=0;i<=arr.length - k;i++){
+            int sum = arr[i];
+            for(int j = 1; j<k;j++){
+                sum+=arr[i+j];
+            }
+            if(sum < minimumSumSubArray){
+                minimumSumSubArray = sum;
+            }
+        }
+        System.out.println(minimumSumSubArray);
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0;i<n ;i++){
+            arr[i] = sc.nextInt();
+        }
+        findMinSumOfSubArrayofSizaK(arr,k);
+    }
+}
