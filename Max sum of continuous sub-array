@@ -1,0 +1,75 @@
+//Maximum sum subArray
+//Brute force approch:- In this we have take 2 loops one loop for making subArray and find the sum and store it in the max variable which initially have 0.
+import java.util.*;
+public class Main{
+    static int maxSumSubArray(int[] arr){
+        int maxSum = 0;
+        int n = arr.length;
+        for(int i=0; i<n;i++){
+            int sum = 0;
+            for(int j=i;j<n;j++){
+                sum += arr[j];
+            }
+            if(sum > maxSum){
+                maxSum = sum;
+            }
+        }
+        return maxSum;
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0;i<n ;i++){
+            arr[i] = sc.nextInt();
+        } 
+        System.out.println(maxSumSubArray(arr));
+    }
+}
+
+//Kadane Algorithm:- In this algorithm we used to compare every element and add it to the variable called currentsum if the currentsum becomes negative we take the current sum as 0 and move forword with the next element and repeat the same step. 
+//In this all negative number in the array is also handled.
+import java.util.*;
+public class Main{
+    
+    static int maxElementInCaseOfAllNegative(int[] arr){
+        int max = arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    static int maxSumSubArray(int[] arr){
+        int maxSum = 0;
+        int currentSum = 0;
+        boolean negativeFlag = true;
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] > 0){
+              negativeFlag = false;
+            }
+            currentSum += arr[i];
+            if(currentSum > 0 && currentSum > maxSum){
+                maxSum = currentSum;
+            }
+            if(currentSum < 0){
+                currentSum = 0;
+            }
+        }
+        
+        return !negativeFlag ? maxSum : maxElementInCaseOfAllNegative(arr);
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0;i<n ;i++){
+          arr[i] = sc.nextInt();
+        } 
+        System.out.println(maxSumSubArray(arr));
+    }
+}
+contributed by:- Aman Johri
