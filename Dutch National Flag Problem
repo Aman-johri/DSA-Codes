@@ -1,0 +1,48 @@
+//Dutch National Flag Algorithm:- This Algorithm is used to solve problem in which array has 0 , 1 ,2 numbers only and helps to sort them , other numbers except 0,1,2 are not accepted in this.
+//Conditions:-
+//1)If we goet 0 then swap low and mid low++ , mid++;
+//2)If we get 1 then mid++;
+//3)If we get 2 then swap mid and high and high--;
+import java.util.*;
+public class Main{
+    static void swap(int [] arr , int i , int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    static void sortTheArrayHavingZeroOneTwoNumber(int[] arr){
+        int low = 0;
+        int mid = 0;
+        int high = arr.length-1;
+        while(mid <= high){
+            if(arr[mid] == 0){
+                swap(arr,low,mid);
+                low++;
+                mid++;
+            }
+            else if(arr[mid] == 1){
+                mid++;
+            }
+            else {
+                swap(arr,mid,high);
+                high--;
+            }
+        }
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        sortTheArrayHavingZeroOneTwoNumber(arr);
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+Contributed by :- Aman Johri
