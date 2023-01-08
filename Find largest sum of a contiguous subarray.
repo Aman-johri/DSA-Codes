@@ -1,0 +1,37 @@
+// Question:- Find largest sum of a contiguous subarray.
+import java.util.*;
+public class Main{
+    static int largestSumOfContiguousSubArray(int[] arr){
+        int maxSum = 0;
+        int currentSum = 0;
+        boolean flag = true;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] > 0){
+                flag = false;
+            }
+            currentSum+=arr[i];
+            if(currentSum > 0 && currentSum > maxSum){
+                maxSum = currentSum;
+            }
+            if(currentSum < 0){
+                currentSum = 0;
+            }
+        }
+        return  !flag ? maxSum : maximumElementInTheArray(arr);
+    }
+    
+    static int maximumElementInTheArray(int[] arr){
+        int max = arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    
+    public static void main(String[] args){
+        int[] arr = new int[]{1,-2,4,5,6,-8};
+        System.out.println(largestSumOfContiguousSubArray(arr));
+    }
+}
