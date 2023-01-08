@@ -1,0 +1,30 @@
+// Question:- Rotate an array cyclically by k.
+import java.util.*;
+public class Main{
+    static void rotateArrayCyclically(int[] arr , int k){
+        int n = arr.length;
+        k = k%n;
+        
+        reverseArray(arr,0,n-1);
+        reverseArray(arr,0,k-1);
+        reverseArray(arr,k,n-1);
+    }
+    
+    static void reverseArray(int[] arr, int i , int j){
+        while(i < j){
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    public static void main(String[] args){
+        int[] arr = new int[]{1,2,3,45,5,6,7};
+        rotateArrayCyclically(arr,3);
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+contributed by:- Aman Johri
