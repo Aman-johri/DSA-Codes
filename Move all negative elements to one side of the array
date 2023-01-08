@@ -1,0 +1,22 @@
+//Question:- Move all negative elements to one side of the array
+import java.util.*;
+public class Main{
+    static void moveAllNegativeNumberToTheOneSide(int[] arr){
+        int i = -1;
+        for(int j = 0;j< arr.length-1;j++){
+            if(arr[j] < 0){
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    public static void main(String[] args){
+        int arr[] = new int[]{1,2,-3,-4,5};
+        moveAllNegativeNumberToTheOneSide(arr);
+        for(int i=0; i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
