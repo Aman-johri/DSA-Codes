@@ -1,0 +1,13 @@
+//Question:- Kth Max and Min in an array. //complexity:- o(nlogn)
+import java.util.*;
+public class Main{
+    static int findKthMaxAndMinElement(int[] arr, int k){
+        Arrays.sort(arr);
+        return arr[k-1];
+    }
+    public static void main(String[] args){
+        int arr[] = new int[]{1,2,3,4,5};
+        int k = 3;
+        System.out.println(findKthMaxAndMinElement(arr,k));
+    }
+}
