@@ -1,0 +1,23 @@
+//Question:- Find duplicates in an array of N+1 integers.
+import java.util.*;
+public class Main{
+    static ArrayList<Integer> duplicateRemoveFromTheArray(int[] arr){
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i=0; i<arr.length; i++){
+            int pos = Math.abs(arr[i]);
+            if(arr[pos] < 0 ){
+                res.add(pos);
+            }
+            arr[pos] = - arr[pos];
+        }
+        
+        return res;
+    }
+    public static void main(String[] args){
+        int[] arr = new int[]{1, 2, 3, 6, 3, 6, 1};
+        ArrayList<Integer> result = duplicateRemoveFromTheArray(arr);
+        for(Integer i: result){
+            System.out.print(i + " ");
+        }
+    }
+}
